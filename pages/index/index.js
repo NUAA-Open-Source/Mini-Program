@@ -4,10 +4,9 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    inputShowed: false,
+    inputVal: "", //当前输入的查询数据
+    searchData : {}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,40 +14,62 @@ Page({
       url: '../logs/logs'
     })
   },
+  
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+
+  },
+
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+    if (e.detail.value.length>1){
+      this.searchInput(e.detail.value)
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  
+  // 向服务器发送查找请求
+  searchInput:function(inputString){
+    var searchResult = []
+    var that = this
+    wx.request({
+      url: 'https://api.taxn.top/teacher/', 
+      data: {
+        search: inputString,
+        ordering: 'hot',
+        limit:'10'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data.results)
+        for (var i = 0; i < res.data.results.length;i++){
+          var searchResultKey = res.data.results[i];
+          searchResultKey['college'] = app.globalData.table[searchResultKey['college']]
+          searchResult.push(searchResultKey);
+        }
+        that.setData({
+          searchData: searchResult
+        });
+      },
     })
   }
+
 })
