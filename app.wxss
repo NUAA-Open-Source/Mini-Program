@@ -1,6 +1,6 @@
 /**app.wxss**/
 @import 'weui.wxss';
-
+@import 'zan.wxss';
 .container {
   height: 100%;
   display: flex;

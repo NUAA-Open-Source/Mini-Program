@@ -1,0 +1,51 @@
+<!--pages/rateandcomment/index.wxml-->
+<view class="page">
+  <view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label lable_name">
+          <view class="zan-icon zan-icon-password-not-view" style="color: #000;"></view>
+        </view>
+        <view class="weui-form-preview__value_in-hd">{{teacherName}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page__bd">
+    <view class="weui-cells__title">教师评分</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">分数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindChange" value="{{rateNumbersindex}}" range="{{rateNumbers}}">
+            <view class="weui-select weui-select_in-select-after">{{rateNumbers[rateNumbersindex]}}分</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">点名率统计</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">该老师经常点名</view>
+        <view class="weui-cell__ft">
+          <switch bindchange="switchChange" checked />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">对教师的评价</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="更多的内容让同学们更好了解老师" style="height: 10.5em" bindinput="bindTextAreaBlur"/>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title"></view>
+
+  </view>
+  <button class="zan-btn zan-btn--large zan-btn--primary bottomline" bindtap="bindtap"><view class="zan-icon zan-icon-records" style="color: #FFF;"></view>立即评价</button>
+
+</view>

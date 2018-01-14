@@ -1,1 +1,33 @@
 /**index.wxss**/
+.weui-cell{
+  padding: 0
+}
+.weui-cells{
+  margin-top: 0;
+}
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}
+
+.teacher-item{
+  margin-bottom: 10rpx;
+  display: flex;
+  min-height: 10rpx;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 32rpx;
+  color: #353535;
+  line-height: 2em;
+}
+
+.flex-wrp{
+  display:flex;
+}
+
+.orderText{
+	word-wrap:break-word;word-break:break-all;
+	padding:5px;font-size:14px;
+}

@@ -1,0 +1,76 @@
+<!--pages/teacher/index.wxml-->
+<view class="page">
+
+  <view class="page__bd">
+    <!-- 老师基本信息 -->
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label lable_name">{{teacherAveragescore}}</view>
+          <view class="weui-form-preview__value_in-hd">{{teacherName}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">南京航空航天大学</view>
+          <view class="weui-form-preview__value">{{teacherCollege}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">点名率</view>
+          <view class="weui-form-preview__value">{{teacherCheckinpercentage}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">排名</view>
+          <view class="weui-form-preview__value">{{teacherRate}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">参与评分人数</view>
+          <view class="weui-form-preview__value">{{teacherRate}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- song -->
+    <view class="weui-panel">
+      <view class="weui-panel__hd">{{commentData.length}}个评论</view>
+
+      <view class="flex-wrp" style="flex-direction:row;" wx:for="{{commentData}}" wx:for-item="comment-item">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__desc">{{commentData[index].content}}</view>
+          <view class="weui-media-box__info">
+            <view class="weui-media-box__info__meta">发布于{{commentData[index].edit_time}}</view>
+            <view class="weui-media-box__info__meta">时间</view>
+            <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">举报</view>
+          </view>
+
+        </view>
+
+        <view class='rate-view weui-media-box_text'>
+          <view>
+            <view id="{{index}}" class="{{likeClass[index]}}" bindtap='likeTap'></view>
+            <view>{{commentData[index].rate}}</view>
+            <view id="{{index}}" class="{{dislikeClass[index]}}" style="transform:rotate(180deg)" bindtap='dislikeTap'></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 底下的评论栏 -->
+    <navigator url="../rateandcomment/index?teacherId={{teacherId}}&teacherName={{teacherName}}&newOrold={{newOrold}}&userOpenid={{userOpenid}}" hover-class="navigator-hover">
+      <!-- 之前打过分的情况 -->
+      <view wx:if="{{newOrold}}">
+        <button class="zan-btn zan-btn--large zan-btn--primary bottomline">
+          <view class="zan-icon zan-icon-completed" style="color: #FFF;"></view>
+          修改评分</button>
+      </view>
+      <!-- 第一次评论的情况 -->
+      <view wx:else>
+        <button class="zan-btn zan-btn--large zan-btn--primary bottomline">
+          <view class="zan-icon zan-icon-edit" style="color: #FFF;"></view>
+          评分</button>
+      </view>
+    </navigator>
+
+
+
+  </view>
+
+</view>

@@ -1,32 +1,77 @@
 <!--index.wxml-->
 <view class="page">
-    <view class="page__bd">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"
-                    />
-                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
-                </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索</view>
-                </label>
-            </view>
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  <view class="page__bd">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input focus type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
         </view>
-
-        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-          <navigator url="" class="weui-cell" hover-class="weui-cell_active"wx:for="{{searchData}}">
-                <view class="weui-cell__bd">
-                    <view>{{item.name}}</view>
-                    <view>{{item.college}}</view>
-                </view>
-            </navigator>
-
-        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>
+
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+      <!-- 传递教师id，姓名，分数 学院 点名率 排名 -->
+      <navigator url="../teacher/index?id={{item.id}}&name={{item.name}}&average_score={{item.average_score}}&college={{item.college}}&check_in_percentage={{item.check_in_percentage}}&rate={{item.rate}}" class="weui-cell" hover-class="weui-cell_active" wx:for="{{searchData}}">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <view class="weui-media-box__thumb">{{item.average_score}}</view>
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.name}}</view>
+          <view class="weui-media-box__desc">{{item.college}}</view>
+        </view>
+      </navigator>
+      <!-- 如果找不到老师 -->
+      <navigator url="" class="weui-cell" hover-class="weui-cell_active" wx:if="{{searchData.length == 0}}">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="/images/nini.jpeg" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">找不到老师？</view>
+          <view class="weui-media-box__desc">帮助我们完善信息，让更多人获益</view>
+        </view>
+      </navigator>
+    </view>
+
+    <view hidden="{{inputShowed}}">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">当前学院</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker bindchange="bindTeacherChange" value="{{array[teacherIdx]}}" range="{{array}}" range-key="{{'name'}}">
+                <view class="weui-input">{{array[teacherIdx].name}}</view>
+              </picker>
+            </view>
+            <!-- add -->
+
+          </view>
+        </view>
+      </view>
+
+               <view class="flex-wrp" style="flex-direction:row;">
+        <view class="orderText">按</view>
+        <picker bindchange="bindOrderChange" value="{{ordering[orderIdx]}}" range="{{ordering}}" range-key="{{'id'}}">
+          <view class="orderText">{{ordering[orderIdx].id}}</view>
+        </picker>
+        <view class="orderText">排序</view>
+      </view>         
+
+      <view class="teacher-item" wx:for="{{teacherList}}" wx:for-item="teacher">
+        <view id="{{index}}" bindtap='selectTeacher'>{{teacher.name}}</view>
+      </view>
+
+    </view>
+
+  </view>
 </view>

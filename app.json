@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/search/index"
+    "pages/teacher/index",
+    "pages/rateandcomment/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

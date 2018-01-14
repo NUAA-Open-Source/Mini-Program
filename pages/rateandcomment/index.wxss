@@ -1,0 +1,10 @@
+/* pages/rateandcomment/index.wxss */
+.bottomline {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.lable_name {
+  color: #000;
+  font-size:50px;
+}

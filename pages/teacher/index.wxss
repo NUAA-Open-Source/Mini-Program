@@ -1,0 +1,53 @@
+/* pages/teacher/index.wxss */
+
+/* 底栏 */
+.bottomline {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 表单栏 */
+
+.weui-form-preview__label {
+  min-width: 0;
+}
+
+.lable_name {
+  color: #000;
+  font-size:50px;
+}
+
+.weui-panel__hd {
+  color: #000;
+}
+
+/* song */
+.flex-wrp{
+	display: flex;
+}
+
+.rate-view{
+  position: fixed;
+  right: 0;
+  display: flex;
+}
+
+.default-tri{
+	margin: 5px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 15px 15px 15px;
+	border-color: transparent transparent #efefef transparent;
+}
+
+.select-tri{
+	margin: 5px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 15px 15px 15px;
+	border-color: transparent transparent #62b900 transparent;
+}
+
