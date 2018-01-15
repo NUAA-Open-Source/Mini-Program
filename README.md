@@ -16,12 +16,11 @@
 ### 小程序界面展示
 注：展示界面中对老师的评价均为模拟测试。
 #### 1.学院筛选与按照热度，评分，拼音排序 包含 1627 条 教师数据[了解我们如何获取全部老师信息](https://github.com/NiNiPing/teacherinfo)
-![](http://p0xjmrizh.bkt.clouddn.com/15160037571323.gif)
-#### 2. 拼音模糊搜索教师![](http://p0xjmrizh.bkt.clouddn.com/15160038819116.gif)
-#### 3. 对教师的进行评分与评价![](http://p0xjmrizh.bkt.clouddn.com/15160039967915.gif)
-#### 4. 对用户评论进行点赞与反对的支持![](http://p0xjmrizh.bkt.clouddn.com/15160040730176.gif)
-#### 5. 防刷分与刷评论![](http://p0xjmrizh.bkt.clouddn.com/15160041887025.gif)
-
+![](http://p0xjmrizh.bkt.clouddn.com/15160083852364.gif)
+#### 2. 拼音模糊搜索教师![](http://p0xjmrizh.bkt.clouddn.com/15160084090136.gif)
+#### 3. 对教师的进行评分与评价![](http://p0xjmrizh.bkt.clouddn.com/15160084237196.gif)
+#### 4. 对用户评论进行点赞与反对的支持![](http://p0xjmrizh.bkt.clouddn.com/15160084422650.gif)
+#### 5. 防刷分与刷评论![](http://p0xjmrizh.bkt.clouddn.com/15160084523309.gif)
 
 ### 如何复现
 **由于项目中 防刷分与刷评 论加入了对微信用户openid的验证。复现有两种方式**
@@ -48,7 +47,9 @@ Email：wongguobin@gmail.com
 ### 项目成员
 
 [arcosx](https://github.com/arcosx)：产品,小程序端
+
 [lcgooder](https://github.com/lcgooder)：后端，运维
+
 [hason-5](https://github.com/rsonghao)：小程序端
 
 
