@@ -5,56 +5,35 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    wx.checkSession({
-      success: function () {
-        //session 未过期，并且在本生命周期一直有效
-        console.log('登陆状态')
-      },
-      fail: function () {
-        //登录态过期
-        //如果本地存储有openid信息
-        var res = wx.getStorageInfoSync()
-        if (res.keys.indexOf('openid')== 1) {
-          //本次有存储opid,不需要调用
-          console.log('本次有存储opid')
-        }
-        else {
-          //清空所有缓存
-          wx.clearStorage()
-          wx.login({
-            success: res => {
-              // 发送 res.code 到后台换取 openId, sessionKey, unionId
-              if (res.code) {
-                //发起网络请求
-                console.log(res.code)
-                wx.request({
-                  url: 'https://api.taxn.top/user/',
-                  data: {
-                    appid: '************',
-                    appsecret: '****************',
-                    code: res.code
-                  },
-                  method: 'POST',
-                  header: {
-                    'content-type': 'application/json' // 默认值
-                  },
-                  success: function (res) {
-                    console.log(res.data)
-                    try {
-                      wx.setStorageSync('openid', res.data)
-                    } catch (e) {
-                      console.log('存储openid-user失败')
-                    }
-                  }
-                })
-              } else {
-                console.log('获取用户登录态失败！' + res.errMsg)
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          //发起网络请求
+          console.log("当前用户的res.code", res.code)
+          wx.request({
+            url: 'https://api.taxn.top/user/',
+            data: {
+              appid: '在此处填写appid',
+              appsecret: '在此处填写secret',
+              code: res.code
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success: function (res) {
+              console.log("当前用户的open_id", res.data)
+              try {
+                wx.setStorageSync('openid', res.data)
+              } catch (e) {
+                console.log('存储openid-user失败')
               }
             }
           })
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
         }
-
-
       }
     })
 

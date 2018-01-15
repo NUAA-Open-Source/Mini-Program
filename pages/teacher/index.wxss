@@ -51,3 +51,7 @@
 	border-color: transparent transparent #62b900 transparent;
 }
 
+/* 分数居中 */
+.rateNumber{
+  text-align: center
+}

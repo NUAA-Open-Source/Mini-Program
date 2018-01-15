@@ -25,7 +25,7 @@
         </view>
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">参与评分人数</view>
-          <view class="weui-form-preview__value">{{teacherRate}}</view>
+          <view class="weui-form-preview__value">{{commentData.length}}</view>
         </view>
       </view>
     </view>
@@ -47,7 +47,7 @@
         <view class='rate-view weui-media-box_text'>
           <view>
             <view id="{{index}}" class="{{likeClass[index]}}" bindtap='likeTap'></view>
-            <view>{{commentData[index].rate}}</view>
+            <view class="rateNumber">{{commentData[index].rate}}</view>
             <view id="{{index}}" class="{{dislikeClass[index]}}" style="transform:rotate(180deg)" bindtap='dislikeTap'></view>
           </view>
         </view>

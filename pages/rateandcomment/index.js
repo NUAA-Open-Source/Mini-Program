@@ -63,10 +63,11 @@ Page({
     wx.showToast({
       title: '已完成',
       icon: 'success',
-      duration: 3000
+      duration: 5000
     });
+    
     wx.redirectTo({
-      url: '../teacher/index'
+      url: '../index/index'
     })
   },
   //根据 useropid与teacherid求rateid commentid

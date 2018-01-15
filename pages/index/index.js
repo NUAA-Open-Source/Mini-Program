@@ -11,9 +11,9 @@ Page({
     teacherIdx: "0",
     orderIdx: "0",
     ordering: [
-      { "id": "拼音", "name": "ordering=pinyin" },
       { "id": "热度", "name": "ordering=hot" },
-      { "id": "评分", "name": "ordering=rate" }
+      { "id": "评分", "name": "ordering=rate" },
+      { "id": "拼音", "name": "ordering=pinyin" }
     ],
     teacherList: [],
     array: [
@@ -129,7 +129,7 @@ Page({
     var that = this;
     var teacherList = [];
     wx.request({
-      url: 'https://api.taxn.top/teacher/?ordering=pinyin',
+      url: 'https://api.taxn.top/teacher/?ordering=hot',
       data: {
         limit: 8
       },

@@ -18,8 +18,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 32rpx;
-  color: #353535;
+  font-size: 39rpx;
+  color: #62B900;
   line-height: 2em;
 }
 
@@ -30,4 +30,7 @@
 .orderText{
 	word-wrap:break-word;word-break:break-all;
 	padding:5px;font-size:14px;
+}
+.weui-cell__ft{
+  color:#000
 }
