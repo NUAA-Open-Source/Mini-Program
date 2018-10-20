@@ -61,13 +61,4 @@ _计划于2018年春季学期上线的_
 
 Email：wongguobin@gmail.com
 
-### 项目成员
-
-[arcosx](https://github.com/arcosx)：产品,小程序端
-
-[lcgooder](https://github.com/lcgooder)：后端，运维
-
-[hason-5](https://github.com/rsonghao)：小程序端
-
-
 
